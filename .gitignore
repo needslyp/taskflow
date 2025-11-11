@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual envs and dependency environments
+.env
+.venv/
+env/
+venv/
+ENV/
+Pipfile.lock
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Docker
+docker/
+*.pid
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# Database and Alembic
+*.db
+alembic/versions/
+
+# Test and coverage outputs
+htmlcov/
+.coverage
+.tox/
+pytest_cache/
+tests/__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Other
+*.bak
