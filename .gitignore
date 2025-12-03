@@ -17,8 +17,10 @@ dist/
 *.egg-info/
 
 # Docker
-docker/
-*.pid
+docker/*.pid
+docker/*.log
+docker/data/
+docker/volumes/
 
 # IDEs and editors
 .vscode/
