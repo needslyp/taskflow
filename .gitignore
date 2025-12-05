@@ -1,15 +1,20 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 *.so
+.Python
 
 # Virtual envs and dependency environments
 .env
+.env.local
+.env.*.local
 .venv/
 env/
 venv/
 ENV/
-Pipfile.lock
+# Pipfile.lock should be committed for reproducibility
 
 # Distribution / packaging
 build/
@@ -26,17 +31,26 @@ docker/volumes/
 .vscode/
 .idea/
 *.swp
+*~
 
 # Database and Alembic
 *.db
-alembic/versions/
+*.sqlite
+*.sqlite3
+# Alembic migration files should be committed
+# Only ignore compiled Python files in alembic
+alembic/versions/__pycache__/
 
 # Test and coverage outputs
 htmlcov/
 .coverage
+.coverage.*
 .tox/
+.pytest_cache/
 pytest_cache/
 tests/__pycache__/
+*.cover
+.hypothesis/
 
 # OS files
 .DS_Store
@@ -45,5 +59,27 @@ Thumbs.db
 # Logs
 *.log
 
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
 # Other
 *.bak
+*.tmp

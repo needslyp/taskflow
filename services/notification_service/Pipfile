@@ -9,6 +9,7 @@ uvicorn = "*"
 sqlalchemy = "*"
 pydantic = "*"
 psycopg2-binary = "*"
+alembic = "*"
 
 [dev-packages]
 pytest = "*"

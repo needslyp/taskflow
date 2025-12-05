@@ -11,6 +11,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taskflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   project_service:
     build:
@@ -19,7 +24,8 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://taskflow:taskflow@postgres:5432/taskflow_db
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8001:8000"
 
@@ -30,7 +36,8 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://taskflow:taskflow@postgres:5432/taskflow_db
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8002:8000"
 
@@ -41,7 +48,8 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://taskflow:taskflow@postgres:5432/taskflow_db
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8003:8000"
 

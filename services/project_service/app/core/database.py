@@ -1,8 +1,10 @@
 import os
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker, declarative_base
 
+# PostgreSQL schema for project_service
+SCHEMA_NAME = "project_service"
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
@@ -11,7 +13,14 @@ DATABASE_URL = os.getenv(
 
 engine = create_engine(DATABASE_URL, future=True)
 
+# Create schema if it doesn't exist
+with engine.begin() as conn:
+    conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA_NAME}"))
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base class for models with schema
+Base = declarative_base()
 
 
 def get_db():
